@@ -1,0 +1,15 @@
+SQL (Structured Query Language) es un lenguaje de programación utilizado para administrar 
+y manipular bases de datos relacionales. Fue desarrollado en la década de 1970 y desde 
+entonces se ha convertido en un estándar de facto para trabajar con bases de datos en todo el mundo.
+
+SQL se utiliza para realizar diversas tareas, como la creación y modificación de tablas y campos 
+en una base de datos, la inserción, actualización y eliminación de datos de una tabla, y la recuperación 
+de datos de una o varias tablas mediante consultas.
+
+El lenguaje SQL se compone de una serie de comandos o instrucciones que se utilizan para interactuar
+ con una base de datos. Algunos de los comandos más comunes son SELECT (para recuperar datos de una tabla),
+ INSERT (para insertar nuevos datos en una tabla), UPDATE (para actualizar datos existentes en una tabla) 
+y DELETE (para eliminar datos de una tabla).
+
+SQL es una herramienta esencial para cualquier persona que trabaje con bases de datos, ya 
+sea en el ámbito empresarial o en el desarrollo de software.

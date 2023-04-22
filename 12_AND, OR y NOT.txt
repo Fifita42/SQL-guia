@@ -1,0 +1,42 @@
+and or y not nos sirve para aplicar varias condiciones en el where
+
+						clientes
+------------------------------------------------------------------------------------------------------
+CustomerID	CustomerName	                        ContactName	Address                      |
+1	        Alfreds Futterkiste	                Maria Anders	Obere Str. 57                |
+2	        Ana Trujillo Emparedados y helados	Ana Trujillo	Avda. de la Constitución 2222|
+3	        Antonio Moreno Taquería	                Antonio Moreno	Mataderos 2312               |
+4	        Around the Horn	                        Thomas Hardy	120 Hanover Sq.              |
+------------------------------------------------------------------------------------------------------
+SELECT * FROM Customers
+WHERE CustomerID >= 2 AND CustomerID < 4;
+
+						clientes
+------------------------------------------------------------------------------------------------------
+CustomerID	CustomerName	                        ContactName	Address                      |
+2	        Ana Trujillo Emparedados y helados	Ana Trujillo	Avda. de la Constitución 2222|
+3	        Antonio Moreno Taquería	                Antonio Moreno	Mataderos 2312               |
+------------------------------------------------------------------------------------------------------
+
+********************************************************************
+en otra tabla hipotetica
+SELECT * FROM Products
+WHERE (Price < 20 OR CategoryID =6) AND SupplierID = 7
+
+ProductID	ProductName	SupplierID	CategoryID	Unit	                Price
+16	       Pavlova	        7   	         3	        32 - 500 g boxes	17.45
+17	       Alice Mutton	7	         6	        20 - 1 kg tins	        39
+70	       Outback Lager	7	         1	        24 - 355 ml bottles	15
+
+********************************************************************
+SELECT * FROM Products
+WHERE NOT Price  > 20
+//niega la condicion entera para mostrar lo contrario a lo pedido
+
+					productos
+----------------------------------------------------------------------------------------------
+ProductID	ProductName	SupplierID	CategoryID	Unit			Price|
+1		Chais		1		1		10 boxes x 20 bags	18   |
+2		Chang		1		1		24 - 12 oz bottles	19   |
+3		Aniseed Syrup	1		2		12 - 550 ml bottles	10   |
+13		Konbu		6		8		2 kg box		6    |

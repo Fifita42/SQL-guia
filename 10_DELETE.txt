@@ -1,0 +1,19 @@
+sirve para borrar un campo de valor o un re registro. por ejemplo:
+
+		turnos_medicos
+-----------------------------------------------
+id_turno profesional id_usuario motivo horario|
+1        Dr.Ramirez  5          dolor  12:30  |
+2        Dr.Ramirez  3          dolor  11:30  |
+3        Dr.Ramirez  3          dolor  11:30  |
+-----------------------------------------------
+DELETE FROM turnos_medicos
+WHERE id_turno = 3;
+SELECT * FROM turnos_medicos;
+
+		turnos_medicos
+-----------------------------------------------
+id_turno profesional id_usuario motivo horario|
+1        Dr.Ramirez  5          dolor  12:30  |
+2        Dr.Ramirez  3          dolor  11:30  |
+-----------------------------------------------

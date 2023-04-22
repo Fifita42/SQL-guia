@@ -1,0 +1,21 @@
+sirve para modificar un campo de valor o registro. por ejemplo:
+
+		turnos_medicos
+-----------------------------------------------
+id_turno profesional id_usuario motivo horario|
+1        Dr.Ramirez  5          dolor  12:30  |
+2        Dr.Ramirez  3          dolor  11:30  |
+3        Dr.Ramirez  3          dolor  11:30  |
+-----------------------------------------------
+
+UPDATE turnos_medicos SET horario = "10:30", motivo = "dolor de muela"
+WHERE id_turno = 2;
+SELECT * FROM turnos_medicos;
+
+		turnos_medicos
+-------------------------------------------------------
+id_turno profesional id_usuario motivo         horario|
+1        Dr.Ramirez  5          dolor          10:30  |
+2        Dr.Ramirez  3          dolor de muela 11:30  |
+3        Dr.Ramirez  3          dolor          11:30  |
+-------------------------------------------------------
