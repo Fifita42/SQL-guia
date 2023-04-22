@@ -1,0 +1,2 @@
+Para empezar a usar sql y practicar, nececitaremos un gestor de bases de datos que nos proporcionara una 
+interfaz grafica para facilitar el trabajo. Recomiendo: xampp o dbms (junto a db browser)

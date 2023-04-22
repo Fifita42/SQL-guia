@@ -1,9 +1,0 @@
-cuando en una tabla creamos entidades con los mismos datos, como por ejemplo el mismo nombre y edad,
-necesitamos algo para diferenciarlos, para eso estan los identificadores (id). normalmente se ponen 
-con el atributo auto_increment para que vayan aumentando de valor automaticamente conforme vamos creando
-nuevas entidades.
-
-id nombre apellido
-0 tobias molina
-1 juan perez
-2 tomas cristian

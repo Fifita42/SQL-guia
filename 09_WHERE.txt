@@ -1,0 +1,25 @@
+sirve para mostrar registros en el que cierto campo de valor cumpla una condicion
+por ejemplo en la tabla personas
+  
+ personas
+---------------
+id nombre edad|
+0  tobias  12 |
+1  jamon   33 |
+
+SELECT * FROM personas
+WHERE id= 1
+
+---------------
+id nombre edad|
+1  jamon   33 |
+
+//o
+
+SELECT nombre FROM personas
+WHERE id= 1
+------
+nombre|
+jamon |
+
+en el where como condicion tambien podemos usar las condiciones clasicas como (<=), (>=), (=), (!=)

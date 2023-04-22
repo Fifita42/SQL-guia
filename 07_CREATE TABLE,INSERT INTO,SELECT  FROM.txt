@@ -1,0 +1,12 @@
+CREATE TABLE alumno (id INT(9) AUTO_INCREMENT PRIMARY_KEY,
+		     nombre VARCHAR(30), 
+		     edad INT(3));
+
+INSERT INTO alumno(nombre, edad) VALUES ("juan",23);
+
+SELECT * FROM alumno;
+//sino
+SELECT nombre FROM alumno;
+//etc
+
+

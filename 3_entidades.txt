@@ -1,7 +1,0 @@
-las entidades son todas las cosas fisicas en el mundo, ya sea una mesa, un animal o una persona.
-en base de datos, los vamos a representar en una tabla, por ejemplo la tabla personas:
-
-	personas
-nombre  apellido  edad
-juan	moro	  34
-zoro	zazano	  45
