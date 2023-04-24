@@ -1,0 +1,24 @@
+Limit pone un limite a los resultados a mostrar. por ejemplo:
+
+				Clientes
+CustomerID	CustomerName				ContactName		Address
+1		Alfreds Futterkiste			Maria Anders		Obere Str. 57
+2		Ana Trujillo Emparedados y helados	Ana Trujillo		Avda. de la Constitución 2222
+3		Antonio Moreno Taquería			Antonio Moreno		Mataderos 2312
+4		Around the Horn				Thomas Hardy		120 Hanover Sq.
+5		Berglunds snabbköp			Christina Berglund	Berguvsvägen 8
+6		Blauer See Delikatessen			Hanna Moos		Forsterstr. 57
+7		Blondel père et fils			Frédérique Citeaux	24, place Kléber
+8		Bólido Comidas preparadas		Martín Sommer		C/ Araquil, 67
+9		Bon app''				Laurence Lebihans	12, rue des Bouchers
+10		Bottom-Dollar Marketse			Elizabeth Lincoln	23 Tsawassen Blvd.
+
+
+SELECT * FROM Customers LIMIT 5
+
+CustomerID	CustomerName				ContactName		Address
+1		Alfreds Futterkiste			Maria Anders		Obere Str. 57
+2		Ana Trujillo Emparedados y helados	Ana Trujillo		Avda. de la Constitución 2222
+3		Antonio Moreno Taquería			Antonio Moreno		Mataderos 2312
+4		Around the Horn				Thomas Hardy		120 Hanover Sq.
+5		Berglunds snabbköp			Christina Berglund	Berguvsvägen 8

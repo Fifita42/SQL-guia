@@ -1,0 +1,58 @@
+las funciones de agregación nos permiten agrupar datos, resumirlos e incluso trabajar con estadísticas sobre los datos.
+las funciones de agregación trabajan con la cláusula SELECT junto a la función de agregación. Ejemplo:
+
+SELECT COUNT(employs) FROM Employes AS CantidadNombres
+
+devolvería la cantidad de valores del campo employs que hay.
+
+------
+Otra función es SUM() que suma todos los valores de un campo
+
+SELECT SUM(Prices) FROM Products AS SumaDePrecios
+------
+Otra función sería AVG() que devolverá el promedio de los valores de un campo.
+
+
+SELECT AVG(Prices) FROM Products AS PromedioDeGanancias
+
+Si el resultado es un número real (con comas) podemos aplicar la función ROUND que redondeara el resultado. ejemplo
+
+SELECT ROUND(AVG(Prices)) FROM Products AS PromedioDeGanancias
+
+La función ROUND trabaja con 2 valores:
+ROUND(ValorARedonder, CantidadDeDecimales)
+
+ejemplo:
+ROUND(2.3333,2) resultaría en 2.33
+
+-------
+
+Otra función es MIN() que devolverá el valor mas pequeño de un campo
+
+SELECT MIN(Prices) FROM Products AS PrecioBarato.
+
+Esta forma solo devolvería el precio más bajo, pero si quiero mostrar mas datos pertenecientes al que tiene el precio mas bajo, puedo hacer lo siguiente:
+
+
+SELECT ProductName, MIN(Prices) FROM Products AS PrecioBarato WHERE Prices IS NOT NULL
+
+----------
+
+Otra función parecida a la anterior es MAX() que esta vez devolverá el valor mas grande de un campo
+
+SELECT ProductName, MAX(Prices) FROM Products AS PrecioBarato
+
+
+-------
+Existen muchísimas funciones de agregación destinadas a algún propósito, investigar más.
+
+
+
+
+
+
+
+
+
+
+

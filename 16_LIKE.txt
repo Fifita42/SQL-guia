@@ -1,0 +1,60 @@
+El operador LIKE por defecto es lo mismo que utilizar el operador igual(=)
+
+SELECT * FROM Employees WHERE LastName like  "Fuller"
+
+EmployeeID	LastName	FirstName	BirthDate	Photo		Notes
+2		Fuller		Andrew		1952-02-19	EmpID2.pic	Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.
+
+Lo que lo diferencia del operador igual es que posee dos "comodines" el % que señala que debe buscar
+valores que contengan esa condicion sin contar lo que tenian por detras o por delante. en "%ler" le digo que me devuelva 
+resultados que contengan "ler" sin importar si tenian mas texto "antes" de llegar a "ler".
+
+SELECT * FROM Employees WHERE LastName like  "%ler"
+
+EmployeeID	LastName	FirstName	BirthDate	Photo		Notes
+2		Fuller		Andrew		1952-02-19	EmpID2.pic	Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.
+
+Tambien puede funcionar al revez, puede señalar a un valor que empieze con una condicion y que termine 
+con cualquier cosa, por ejemplo LIKE "f%"
+
+SELECT * FROM Employees WHERE LastName like  "f%"
+EmployeeID	LastName	FirstName	BirthDate	Photo		Notes
+2		Fuller		Andrew		1952-02-19	EmpID2.pic	Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.
+
+
+El operador LIKE no es key sensitive, osea, no diferencia mayusculas de minusculas.
+
+Tambien podria utilizar el comodin % en ambos lados de la condicion para señalar a un valor que empieze y 
+termine como quiera mientras contenga mi condicion, por ejemplo:
+
+SELECT * FROM Employees WHERE LastName like  "%r%"
+
+EmployeeID	LastName	FirstName	BirthDate	Photo		Notes
+2		Fuller		Andrew		1952-02-19	EmpID2.pic	Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.
+3		Leverling	Janet		1963-08-30	EmpID3.pic	Janet has a BS degree in chemistry from Boston College). She has also completed a certificate program in food retailing management. Janet was hired as a sales associate and was promoted to sales representative.
+9		Dodsworth	Anne		1969-07-02	EmpID9.pic	Anne has a BA degree in English from St. Lawrence College. She is fluent in French and German.
+
+Basicamente el comodin % es para devolver un valor que comienze con algo "algo%", que termine con algo "%algo"
+o que contenga algo "%algo%".
+
+
+
+********************************************************
+El segundo comodin es el guion bajo ("_") que nos dice que cierto valor contiene cierta cantidad de caracteres,
+un guion representara la cantidad de caracteres, ejemplo:
+
+SELECT * FROM Employees WHERE LastName like  "F___er" //son 3 guiones bajos para "ull" de "fuller"
+
+EmployeeID	LastName	FirstName	BirthDate	Photo		Notes
+2		Fuller		Andrew		1952-02-19	EmpID2.pic	Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.
+
+***************************************************
+
+Se pueden combinar ambos comodines:
+
+SELECT * FROM Employees WHERE LastName like  "%___er"
+
+EmployeeID	LastName	FirstName	BirthDate	Photo		Notes
+2		Fuller		Andrew		1952-02-19	EmpID2.pic	Andrew received his BTS commercial and a Ph.D. in international marketing from the University of Dallas. He is fluent in French and Italian and reads German. He joined the company as a sales representative, was promoted to sales manager and was then named vice president of sales. Andrew is a member of the Sales Management Roundtable, the Seattle Chamber of Commerce, and the Pacific Rim Importers Association.
+
+

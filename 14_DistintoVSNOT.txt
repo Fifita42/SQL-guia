@@ -1,0 +1,4 @@
+El operador de comparacion "Distinto de (!=)" es diferente a un operador logico como NOT.
+El operador de comparacion compara dos valores para devolver TRUE o FALSE mientra que el operador
+logico trabaja con la condicion TRUE o FALSE directamente. 
+Habra una imagen de ejemplo luego de este texto.

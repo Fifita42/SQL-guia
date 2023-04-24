@@ -1,0 +1,2 @@
+ORDER BY sirve para agrupar un registro mientras tenga un cierto campo de valor compartido. habra una imagen 
+que lo ejemplifique.

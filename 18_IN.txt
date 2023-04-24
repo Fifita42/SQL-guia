@@ -1,0 +1,8 @@
+El operador logico IN es como una abreviacion para el operador OR para situaciones como la siguiente:
+
+SELECT * FROM Products WHERE SupplierID = 3 or SupplierID = 4 or SupplierID = 5 or SupplierID = 6
+
+donde lo podemos acortar con:
+SELECT * FROM Products WHERE SupplierID IN (3,4,5,6)
+
+IN se puede utilizar en la cláusula select, update y en delete.
