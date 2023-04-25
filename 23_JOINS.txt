@@ -57,4 +57,44 @@ que amenos que querramos utilizar otro tipo de join, podemos no colocar la claus
 SELECT * FROM Employees e
 JOIN Orders o ON e.EmployeeID = o.EmployeeID
 
+LEFT JOIN:
+Lo que hace es devolvernos parte de la primera tabla y la segunda tabla completa. 
+en otros gestores de bases de datos exite RIGHT JOIN que nos devolvera la primera tabla
+completa y parte de la segunda.
+
+SELECT FirstName, Reward, Month FROM Employees e
+LEFT JOIN Rewards r on e.EmployeeID = r.EmployeeID
+
+FirstName	Reward	Month
+Nancy		280	April
+Andrew		180	February
+Janet		200	January
+Margaret	NULL 	NULL	
+Steven		250	March
+Michael		NULL 	NULL	
+Robert		NULL 	NULL	
+Laura		160	May
+Anne		NULL 	NULL	
+Adam		NULL 	NULL	
+
+SELECT FirstName, Reward, Month FROM Rewards r
+LEFT JOIN Employees e on r.EmployeeID = e.EmployeeID
+
+FirstName	Reward	Month
+Janet		200	January
+Andrew		180	February
+Steven		250	March
+Nancy		280	April
+Laura		160	May
+NULL		NULL	June
+
+
+
+
+FULL JOIN: full join sirve para unir 2 consultas sin combinar tablas como en CROSS JOIN.
+Se utiliza la clausua UNION o UNION ALL. Se vera mas a detalle en la siguiente nota.
+El FULL JOIN en otros gestores de bases de datos podria ser utilizado de forma diferente sin usar el 
+UNION, investigar.
+
+
 

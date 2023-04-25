@@ -1,6 +1,9 @@
-CREATE TABLE alumno (PRIMARY KEY("id" AUTOINCREMENT ),
-		     nombre TEXT, 
-		     edad INTEGRER);
+CREATE TABLE alumno (
+		     "id" INTEGRER,
+		     "nombre" TEXT, 
+		     "edad" INTEGRER,
+		     PRIMARY KEY("id" AUTOINCREMENT )
+		     );
 
 INSERT INTO alumno(nombre, edad) VALUES ("juan",23);
 

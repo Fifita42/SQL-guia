@@ -1,0 +1,121 @@
+NOTA: el UNION en otros gestores de bases de datos podria ser diferente.
+UNION lo que nos permitira es combinar 2 consultas.
+Por ejemplo, tengo las siguientes 2 tablas:
+
+Employees
+-------------------------------------------------
+EmployeeID	LastName	FirstName	
+1		Davolio		Nancy		
+2		Fuller		Andrew		
+3		Leverling	Janet		
+4		Peacock		Margaret	
+5		Buchanan	Steven	
+6		Suyama		Michael	
+7		King		Robert	
+8		Callahan	Laura	
+9		Dodsworth	Anne	
+10		West		Adam	
+-------------------------------------------------
+
+
+Rewards
+------------------------------------------------
+RewardId	EmployeeID	Reward	Month
+1		3		200	January
+2		2		180	February
+3		5		250	March
+4		1		280	April
+5		8		160	May
+6				June
+------------------------------------------------
+Quiero mostrar los premios pertenecientes a cada empleado y los empleados que poseen un premio.
+
+1)
+SELECT FirstName, Reward, Month FROM Employees e
+LEFT JOIN Rewards r on e.EmployeeID = r.EmployeeID
+
+FirstName	Reward	Month
+Nancy		280	April
+Andrew		180	February
+Janet		200	January
+Margaret	NULL 	NULL	
+Steven		250	March
+Michael		NULL 	NULL	
+Robert		NULL 	NULL	
+Laura		160	May
+Anne		NULL 	NULL	
+Adam		NULL 	NULL	
+
+
+2)
+SELECT FirstName, Reward, Month FROM Rewards r
+LEFT JOIN Employees e on r.EmployeeID = e.EmployeeID
+
+FirstName	Reward	Month
+Janet	200	January
+Andrew	180	February
+Steven	250	March
+Nancy	280	April
+Laura	160	May
+NULL 	NULL	June
+
+
+Ahora quiero convinar ambas consultas con un full join para mostrar una sola tabla:
+
+SELECT FirstName, Reward, Month FROM Employees e
+LEFT JOIN Rewards r on e.EmployeeID = r.EmployeeID
+UNION --Este es el FULL JOIN
+SELECT FirstName, Reward, Month FROM Rewards r
+LEFT JOIN Employees e on r.EmployeeID = e.EmployeeID
+
+
+FirstName	Reward	Month
+NULL 		NULL	June
+Adam		NULL 	NULL	
+Andrew		180	February
+Anne		NULL 	NULL	
+Janet		200	January
+Laura		160	May
+Margaret 	NULL 	NULL		
+Michael		NULL 	NULL
+Nancy		280	April
+Robert		NULL 	NULL
+Steven		250	March
+
+Lo que sucedio aca es que se mostraron ambas consultas una debajo de la otra, para luego
+borrar los registros repetidos. Si yo quisiera mostrar todos los datos incluso los repetidos
+agrego la clausula ALL al UNION
+
+SELECT FirstName, Reward, Month FROM Employees e
+LEFT JOIN Rewards r on e.EmployeeID = r.EmployeeID
+UNION ALL
+SELECT FirstName, Reward, Month FROM Rewards r
+LEFT JOIN Employees e on r.EmployeeID = e.EmployeeID
+
+
+FirstName	Reward	Month
+Nancy		280	April --empieza con la primera consulta
+Andrew		180	February
+Janet		200	January
+Margaret 	NULL 	NULL		
+Steven		250	March
+Michael 	NULL 	NULL		
+Robert 		NULL 	NULL		
+Laura		160	May
+Anne 		NULL 	NULL		
+Adam 		NULL 	NULL		
+Janet		200	January --aca empieza la segunda consulta
+Andrew		180	February
+Steven		250	March
+Nancy		280	April
+Laura		160	May
+NULL 		NULL	June
+
+Para que las uniones echas con UNION funcionen sin problemas, tienen que tener la misma cantidad de columnas con
+el mismo tipo de dato.
+Una ejemplificacion de UNION se encuentra en la imagen "24_UNION_ejemplo.png"
+
+No todos los gestores de bases de datos utilizan UNION y UNION ALL junto a un JOIN LEFT/RIGHT como SQLite y MySQL. Otros utilizan
+la clausula FULL OUTER JOIN o OUTER JOIN como Oracle y Microsoft SQL Server.
+SELECT * FROM tabla1
+FULL OUTER JOIN tabla2 ON tabla1.id = tabla2.id;
