@@ -1,0 +1,26 @@
+Quiero una tabla con el nombre, apellido y cantidad de ventas, de los empleados que vendieron 
+mas que el promedio.
+
+--NOTA importante, recordar el orden de SQL SELECT...FROM...WHERE...GROUP BY...HAVING...ORDER BY...LIMIT
+
+SELECT FirstName, LastName, EmployeeID,
+(
+	SELECT SUM(Quantity) FROM [orders] o, [orderDetails] od --Primero coloco los valores a seleccionar, luego de DONDE los voy a selecconar
+	WHERE o.EmployeeID = e.EmployeeID  AND od.OrderID = o.OrderID --Despues aplico el filtro
+	
+ ) as unidades_vendidas
+FROM [Employees] e
+WHERE unidades_vendidas > (SELECT avg(unidadesporvendedor) FROM ( 
+	SELECT
+	(
+		SELECT SUM(Quantity) FROM [orders] o2, [orderDetails] od2
+		WHERE o2.EmployeeID = e2.EmployeeID  AND od2.OrderID = o2.OrderID
+	) as unidadesporvendedor 
+	FROM [Employees] e2
+))
+
+
+FirstName	LastName	EmployeeID	unidades_vendidas
+Nancy		Davolio		1		1924
+Janet		Leverling	3		1725
+Margaret	Peacock		4		3232

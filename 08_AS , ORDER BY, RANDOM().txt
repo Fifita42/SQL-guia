@@ -26,7 +26,10 @@ SELECT edad*2 as edad_doble FROM personas
  90        |
  130       |
 
+Otra forma de utilizar AS es para darle otro nombre temporal a una tabla existente para utilizarla facilmente en subconsultas que
+veremos mas adelante. Seria de la siguiente forma: [TablaColores] color
 
+Tambien lo utilizamos para reutilizar una subconsulta, pero eso se vera mas adelante.
 --------------------------------------------------
 ORDER BY me mostrara la tabla o columna ordenada ascendentemente(ASC) o descendentemente(DESC)
 

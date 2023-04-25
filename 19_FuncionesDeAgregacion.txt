@@ -45,7 +45,10 @@ SELECT ProductName, MAX(Prices) FROM Products AS PrecioBarato
 
 -------
 Existen muchísimas funciones de agregación destinadas a algún propósito, investigar más.
-
+-----------------
+IMPORTANTE: una vez que creaste un valor con funciones de agrupacion, este valor no puede relacionarse
+con otras clausulas o operadores que no sean de agrupacion como WHERE, <,>,>=,<=, etc. para eso habria que
+utilizar la clausula HAVING que se explicara mas adelante.
 
 
 

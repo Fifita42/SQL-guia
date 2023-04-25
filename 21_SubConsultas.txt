@@ -1,0 +1,33 @@
+Las subconsultas nos permite realizar consultas encerradas en parentesis dentro de otras consultas, por ejemplo,
+tengo 2 tablas, productos y ordenes. en ambas tablas tengo el valor productID que es unico para cada
+producto. yo quiero mostrar en una tabla el nombre de cada producto y el valor total de su venta por cada orden
+que se hizo. para eso utilizo una subconsulta:
+
+
+SELECT ProductID, SUM(Quantity) as Vendidos, 
+(SELECT ProductName FROM Products WHERE OrderDetails.ProductID = Products.ProductID) as Nombre,
+(SELECT Price FROM Products WHERE OrderDetails.ProductID = Products.ProductID) as  Precio,
+SUM(Quantity)*(SELECT Price FROM Products WHERE OrderDetails.ProductID = Products.ProductID) AS total_recaudado
+FROM OrderDetails
+GROUP BY ProductID
+
+
+ProductID	Vendidos	Nombre				Precio	total_recaudado
+1		159		Chais				18	2862
+2		341		Chang				19	6479
+3		80		Aniseed Syrup			10	800
+4		107		Chef Anton's Cajun Seasoning	22	2354
+5		129		Chef Anton's Gumbo Mix		21.35	2754.15
+6		36		Grandma's Boysenberry Spread	25	900
+7		25		Uncle Bob's Organic Dried Pears	30	750
+8		140		Northwoods Cranberry Sauce	40	5600
+9		20		Mishi Kobe Niku			97	1940
+10		85		Ikura				31	2635
+11		182		Queso Cabrales			21	3822
+12		27		Queso Manchego La Pastora	38	1026
+
+  Para hacer referencia al valor de campo de otra tabla coloco el nombre de la tabla junto a un punto y el campo
+al que quiero hacer referencia: Products.ProductID
+
+Un problema muy grande de las subconsultas es que son muy pesadas. Para no utilizarlas hay otra opcion
+mucho mas optima que se explicara mas adelante (joins).

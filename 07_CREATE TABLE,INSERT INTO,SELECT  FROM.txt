@@ -1,6 +1,6 @@
-CREATE TABLE alumno (id INT(9) AUTO_INCREMENT PRIMARY_KEY,
-		     nombre VARCHAR(30), 
-		     edad INT(3));
+CREATE TABLE alumno (PRIMARY KEY("id" AUTOINCREMENT ),
+		     nombre TEXT, 
+		     edad INTEGRER);
 
 INSERT INTO alumno(nombre, edad) VALUES ("juan",23);
 
@@ -9,4 +9,13 @@ SELECT * FROM alumno;
 SELECT nombre FROM alumno;
 //etc
 
+NOTA: los tipos de datos y sus declaraciones difieren segun el gestor de bases de datos
+utilizados, en estas notas utilizare SQLite asi que lo mostrado arriba funcionaria, pero
+en otros como MySQL no. 
 
+En MySQL los tipos de datos serian:
+
+CREATE TABLE alumno (id PRIMARY KEY AUTO_INCREMENT,
+		     nombre VARCHAR(30), 
+		     edad INT(9)
+		    );

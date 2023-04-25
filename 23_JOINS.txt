@@ -1,0 +1,60 @@
+ los joints son una operacion que nosotros solemos utilizar en las bases de datos  para poder combinar la información de dos o más tablas 
+en una base de datos, pero que esa información se devuelva en una sola tabla.
+Básicamente es agarrar dos o más tablas, unirlas y obtener una tabla nueva.
+
+Existen varias formas de unir tablas. imaginemos que tenemos un listado de personas que son estudiantes por ejemplo,
+y otro listado de personas que trabajan. Tenemos listado con personas que trabajan y otro listado con personas que
+estudian. Cabe Resaltar que la lista de personas que estudian demuestran qué es lo que estudian y la
+lista de personas que trabajan muestran de qué trabajan. Entonces cuando unimos las tablas podemos obtener diferentes tipos de resultados con los joins,
+por ejemplo: 
+	Un listado de personas que estudian y que al ladito nos muestre que si trabajan, de qué trabajan. 
+	También podríamos devolver una tabla que solamente muestra las personas que trabajan pero si estudian que muestre su
+	información. 
+	También podríamos devolver un listado de personas que estudian y trabajan al mismo tiempo, o sea que no nos devuelvan las personas que solo
+	hacen una cosa, que nos devuelvan solamente las personas que trabajan y estudian al mismo tiempo, o sea como la
+	la unión de esas dos.
+
+Estas cosas y más podemos hacer con los joints. Tenemos varios tipos de joints pero lo más común
+es clasificarlos en cuatro tipos de joint los Inner join que son los shoin comunes de toda la vida, Los left join,
+los write joins y los full joints.
+Esos son los cuatro más comunes pero también tenemos el Cross join.
+
+Hay 2 formas de realizar un join, de implicita y de forma explicita. La forma implicita es cuando hacemos un join sin agregar la clausula JOIN
+mientras que en la forma explicita si la colocamos.
+
+CROSS JOIN: 
+de forma implicita:
+SELECT * FROM Employees e, Orders o
+
+de forma implicita:
+SELECT * FROM Employees e CROSS JOIN Orders o
+
+Esta clausula nos devolveria una tabla en la que cada valor de la primera tabla aparece en cada valor
+de la segunda tabla. Una imagen representativa se mostrará en "23_cross_join.png"
+
+INNER JOIN:
+de forma implicita:
+SELECT LastName,FirstName,OrderID FROM Employees e, Orders o
+WHERE  e.EmployeeID = o.EmployeeID
+
+de forma implicita:
+SELECT LastName,FirstName,OrderID FROM Employees e
+INNER JOIN Orders o ON e.EmployeeID = o.EmployeeID
+
+
+LastName	FirstName	OrderID
+Buchanan	Steven		10248
+Suyama		Michael		10249
+Peacock		Margaret	10250
+Leverling	Janet		10251
+Peacock		Margaret	10252
+Leverling	Janet		10253
+Buchanan	Steven		10254
+
+
+Esta clausula lo que hace es devolver 2 tablas mientras ambas cumplan determinada condicion. INNER se encuentra por defecto en JOIN, asi
+que amenos que querramos utilizar otro tipo de join, podemos no colocar la clausula INNER:
+SELECT * FROM Employees e
+JOIN Orders o ON e.EmployeeID = o.EmployeeID
+
+
