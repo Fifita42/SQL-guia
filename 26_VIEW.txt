@@ -1,0 +1,34 @@
+Un view es una tabla creada a partir de una consulta de select, para que podamos trabajar con ella despues.
+Por ejemplo: 
+SELECT ProductID,ProductName,Price FROM Products
+WHERE ProductID >20
+ORDER BY ProductID DESC
+
+Nos devolvera la siguiente tabla:
+
+ProductID	ProductName			Price
+77		Original Frankfurter grüne Soße	13
+76		Lakkalikööri			18
+75		Rhönbräu Klosterbier		7.75
+74		Longlife Tofu			10
+73		Röd Kaviar			15
+72		Mozzarella di Giovanni		34.8
+
+para guardar esta tabla como un view hay que hacer lo siguiente:
+
+CREATE VIEW Productos_simplificado AS
+SELECT ProductID,ProductName,Price FROM Products
+WHERE ProductID >20
+ORDER BY ProductID DESC
+
+Esto generara un view en el que podre trabajar y sera equivalente a la tabla resultante 
+de la consulta echa.
+
+Su desventaja podria ser la carga que trae, ya que no creamos una tabla como tal sino que creamos
+una referencia a la consulta con la que creamos el view.
+
+Para borrar un view debemos realizar la siguiente consulta:
+
+DROP VIEW IF EXISTS Productos_simplificado
+
+Por que coloco el IF EXISTS si no es necesario hacerlo? Esto es ya que si el view no existe, se generara un error.

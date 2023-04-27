@@ -1,0 +1,76 @@
+Los indices son utilizados para mejorar la velocidad de respuesta de las consultas.
+Existen:
+
+Indices primarios: son las primary key que utilizamos. sirven para identificar como unico a cada registro(fila) de la tabla.
+
+Indices normales: Sirven para identificar cada campo de una tabla, optimizando la
+velocidad de busqueda y respuesta. Se llama normal ya que cada campo podria estar duplicado
+o ser nulo.
+
+Agiliza la velocidad de busqueda al ubicar el campo mas facilmente e ignorar a los demas en lugar de continuamente comprobarlos
+uno por uno.
+
+Crear:
+CREATE INDEX idx_Products_ProductName ON Products (ProductName)
+
+
+Indices Unicos: Sirven para identificar cada campo de una tabla y que sus campos sean UNICOS, optimizando la
+velocidad de busqueda y respuesta. Sigue permitiendo campos nulos.
+Optimiza la velocidad al igual que el tipo de indice anterior mente mencionado, añadiendo la capacidad de buscar el valor
+pedido y luego ignorar los demas sabiendo que solo hay 1 resultado posible.
+
+nombre 
+juan 		bien
+perez 		bien
+juan 		MAL
+
+Crear:
+CREATE UNIQUE INDEX idx_Employees_FistName ON Employees (FistName)
+
+Indices compuestos: Optimiza la velocidad al igual que todos los indices anteriormente mencionados añadiendo que este
+indice se le aplica a 2 o mas campos, haciendolos unicos. Por ejemplo, en el campo nombre y el campo apellido, al colocarles
+el incice compuesto unico, no pueden existir 2 registros que contengan el mismo nombre y apellido a la vez.
+
+nombre 	apellido
+juan 	perez		bien
+juan 	juan		bien
+perez 	perez		bien
+juan 	perez		MAL
+
+
+Crear:
+CREATE UNIQUE INDEX idx_Employees_FistNameAndLastName ON Employees (FistName,LastName)
+
+
+Los indices no son 100% buenos, tienen sus contras. Pueden ocupar espacio en disco, debido al rendimiento de escritura.
+Cuando se modifica una tabla, todos los indices se tienen que actualizar, lo que puede generar retrasos. Por eso es 
+importante saber cuando agregar un indice.
+Cuando deberia colocarle un indice a una columna? 
+	.Cuando utilizo mucho un campo para el filtrado como en el WHERE o los JOIN
+	.Cuando una tabla posee muchos indices(id).
+
+Una consulta que puede ser optimizada para mostrar un ejemplo seria:
+SELECT * FROM OrderDetails od
+JOIN Orders o
+WHERE OrderDate > "1996-07-04"
+AND od.Quantity > 10
+
+Para optimizarla con indices habria que crear los siguientes:
+CREATE INDEX idx_OrderDetails_Quantity ON OrderDetails (Quantity);
+CREATE INDEX idx_Orders_OrderDate ON Orders (OrderDate);
+
+Tener en cuenta que el resultado de la consulta sera una tabla producida por un cross join ya que
+las condiciones del where no tienen un sentido correcto. La consulta correcta seria:
+
+SELECT * FROM OrderDetails od
+JOIN Orders o
+WHERE o.OrderID = od.OrderID
+AND OrderDate > "1996-07-04"
+AND od.Quantity > 10
+
+Esto de la base de datos "tienda" de sqlite
+
+
+Para borrar un indice se escribe lo siguiente
+DROP INDEX nombredelindice;
+

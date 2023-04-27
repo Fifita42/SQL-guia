@@ -1,0 +1,15 @@
+Las transacciones me permiten realizar modificaciones temporales para ver los resultados, y reestablecer los cambios
+en caso de errores.
+En SQLite las transacciones utilizan lo siguiente:
+
+1)iniciar transaccion
+BEGIN TRANSACTION;--tambien podria ser solo BEGIN
+
+2)Hacer alguna modificacion, por ejemplo una actualizacion:
+UPDATE Products SET ProductName = "Chais" WHERE ProductName = "Tazon";
+
+3)Si te equivocaste y quieres volver todo al inicio de la transaccion:
+ROLLBACK;
+
+4)Guardar los cambios:
+COMMIT;

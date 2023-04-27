@@ -1,0 +1,16 @@
+Tenemos 2 personas que comparten una cuenta bancaria. Ambas al mismo tiempo quieren gastar 100$ al mismo tiempo, ¿La consulta
+de quien debe ser escuchada?
+Para conflictos como estos, existen los bloqueos.
+Hay 3 tipos:
+
+Shared Locks (bloqueos compartidos): tambien conocido como Read Locks, es el bloqueo en mientras nosotros
+estamos LEYENDO en la base de datos, otros tambien podran leer pero no escribir.
+
+Reserved Locks (Bloqueos reservados): Tambien conocidos como Write Locks, es el bloqueo en mientras nosotros
+estamos ESCRIBIENDO en la base de datos, otros solo podran leer.
+
+Bloqueos Exclusivos (Exclusive Locks): Es el bloqueo que impide a otros leer o escribir en la base de datos
+mientras nosotros estemos escribiendo en ella.
+
+SQLite por defecto ya maneja conflictos, pero puede que otros gestores de bases de datos nececiten aplicar 
+codigo, investigar.
